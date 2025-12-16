@@ -839,19 +839,30 @@ body{
 
 /* ================= MOBILE SPECIFIC STYLES ================= */
 @media(max-width:767px) {
-  /* Adjust header for mobile */
+  /* Improved header for mobile */
   .header {
     flex-direction: column;
     align-items: center;
-    padding: 16px;
+    padding: 20px 16px;
+    background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.85));
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   }
   
   .logo-container {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    transform: scale(1.1);
   }
   
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+  
+  .brand-element {
+    width: 8px;
+    height: 32px;
   }
   
   /* Show mobile nav links on mobile */
@@ -859,18 +870,38 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
   }
   
   .mobile-nav-link {
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: linear-gradient(135deg,var(--brand),var(--brand2));
+    color: #0b0f1a;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .mobile-nav-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124,58,237,0.4);
+  }
+  
+  .mobile-nav-link.active {
+    background: linear-gradient(135deg,var(--brand2),var(--brand));
+    box-shadow: 0 4px 12px rgba(34,211,238,0.4);
   }
   
   /* Adjust hero section for mobile */
   .hero-section {
-    padding: 50px 16px 20px;
+    padding: 40px 16px 20px;
   }
   
   .hero-badge {
@@ -906,28 +937,215 @@ body{
     font-size: 14px;
   }
   
-  /* Adjust categories for mobile */
+  /* Improved categories for mobile - 2 rows, 3 columns */
   .categories-container {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 16px;
   }
   
   .category-card {
-    padding: 20px;
+    padding: 16px 12px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
   }
   
   .category-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
   }
   
   .category-card h3 {
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 8px;
   }
   
   .category-card p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  
+  /* Improved about section for mobile */
+  .about-content {
+    margin: 20px 16px;
+    padding: 20px 16px;
+    background: linear-gradient(135deg, var(--surface), rgba(15,23,42,0.8));
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  
+  .about-intro, .about-story, .about-mission {
+    margin-bottom: 24px;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .about-intro::before, .about-story::before, .about-mission::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--brand), var(--brand2));
+  }
+  
+  .about-intro h3, .about-story h3, .about-mission h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    position: relative;
+  }
+  
+  .about-intro h3::before, .about-story h3::before, .about-mission h3::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--brand2);
+    box-shadow: 0 0 8px rgba(34,211,238,0.5);
+  }
+  
+  .about-intro p, .about-story p, .about-mission p {
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 12px;
+  }
+  
+  .core-values {
+    margin-top: 16px;
+    padding: 16px;
+    background: rgba(124,58,237,0.05);
+    border-radius: 12px;
+    border-left: 3px solid var(--brand);
+  }
+  
+  .core-values h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--brand2);
+  }
+  
+  .core-values ul {
+    list-style-type: none;
+    padding-left: 8px;
+  }
+  
+  .core-values li {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+  }
+  
+  .core-values li:before {
+    content: "•";
+    color: var(--brand);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+  }
+  
+  /* Improved team section for mobile */
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .team-member-card {
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .team-member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+  
+  .member-image {
+    margin-bottom: 16px;
+  }
+  
+  .member-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 16px;
+    border: 3px solid rgba(124,58,237,0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .member-name {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  
+  .member-title {
     font-size: 13px;
+    margin-bottom: 12px;
+    color: var(--brand2);
+  }
+  
+  .member-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .contact-link {
+    font-size: 13px;
+  }
+  
+  .about-hiring {
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.05));
+    border: 1px solid rgba(124,58,237,0.3);
+    box-shadow: 0 4px 12px rgba(124,58,237,0.15);
+  }
+  
+  .about-hiring p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .apply-now-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--brand), var(--brand2));
+    box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .apply-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124,58,237,0.4);
   }
   
   /* Adjust launch section for mobile */
@@ -1001,68 +1219,6 @@ body{
   
   .faq-answer p {
     font-size: 13px;
-  }
-  
-  /* Adjust about section for mobile */
-  .about-content {
-    margin: 20px 16px;
-    padding: 20px 16px;
-  }
-  
-  .about-intro h3, .about-story h3, .about-mission h3 {
-    font-size: 20px;
-  }
-  
-  .about-intro p, .about-story p, .about-mission p {
-    font-size: 14px;
-  }
-  
-  .core-values h4 {
-    font-size: 16px;
-  }
-  
-  .core-values li {
-    font-size: 14px;
-  }
-  
-  /* Adjust team section for mobile */
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .team-member-card {
-    padding: 20px 16px;
-  }
-  
-  .member-image img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .member-name {
-    font-size: 18px;
-  }
-  
-  .member-title {
-    font-size: 13px;
-  }
-  
-  .member-description {
-    font-size: 13px;
-  }
-  
-  .contact-link {
-    font-size: 13px;
-  }
-  
-  .about-hiring p {
-    font-size: 14px;
-  }
-  
-  .apply-now-btn {
-    padding: 10px 20px;
-    font-size: 14px;
   }
   
   /* Adjust contact section for mobile */
