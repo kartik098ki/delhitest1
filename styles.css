@@ -839,39 +839,63 @@ body{
 
 /* ================= MOBILE SPECIFIC STYLES ================= */
 @media(max-width:767px) {
-  /* Simple and clean header for mobile */
+  /* Header improvements for mobile - railquick on left, nav on right with vertical line */
   .header {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
     background: rgba(15,23,42,0.95);
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+  
+  /* Add vertical line on right side */
+  .header::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 16px;
+    height: 60%;
+    width: 1px;
+    background: rgba(255,255,255,0.2);
   }
   
   .logo-container {
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    margin-right: auto;
+    order: 1;
   }
   
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
   }
   
-  /* Simple mobile nav links */
+  .brand-element {
+    width: 6px;
+    height: 28px;
+  }
+  
+  /* Smaller mobile nav links with more space */
   .mobile-nav-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
-    width: 100%;
+    gap: 12px;
+    width: auto;
+    margin-left: 16px;
+    order: 2;
   }
   
   .mobile-nav-link {
-    font-size: 12px;
-    padding: 6px 12px;
-    border-radius: 16px;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 12px;
     background: rgba(255,255,255,0.1);
     color: var(--text);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.2s ease;
   }
   
   .mobile-nav-link:hover, .mobile-nav-link.active {
@@ -992,7 +1016,6 @@ body{
     margin-bottom: 16px;
     padding: 0;
     position: relative;
-    display: inline-block;
   }
   
   .about-intro h3::after, .about-story h3::after, .about-mission h3::after {
@@ -1000,7 +1023,7 @@ body{
     position: absolute;
     bottom: -8px;
     left: 0;
-    width: 50px;
+    width: 40px;
     height: 3px;
     background: linear-gradient(90deg, var(--brand), var(--brand2));
     border-radius: 2px;
@@ -1015,7 +1038,7 @@ body{
   
   .core-values {
     margin-top: 20px;
-    padding: 20px;
+    padding: 16px;
     background: rgba(124,58,237,0.05);
     border-radius: 16px;
     border-left: 3px solid var(--brand);
@@ -1029,7 +1052,7 @@ body{
   
   .core-values ul {
     list-style-type: none;
-    padding-left: 0;
+    padding-left: 8px;
   }
   
   .core-values li {
