@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const footerAboutLink = document.getElementById('footerAboutLink');
     const footerContactLink = document.getElementById('footerContactLink');
     const footerHiringLink = document.getElementById('footerHiringLink');
+    const mobileHomeLink = document.getElementById('mobileHomeLink');
     const mobileAboutLink = document.getElementById('mobileAboutLink');
     const mobileContactLink = document.getElementById('mobileContactLink');
     const mobileHiringLink = document.getElementById('mobileHiringLink');
@@ -24,14 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const aboutSection = document.getElementById('aboutSection');
     const contactSection = document.getElementById('contactSection');
     const hiringSection = document.getElementById('hiringSection');
-
-    // Mobile menu elements
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileHomeLink = document.getElementById('mobileHomeLink');
-    const mobileAboutMenuLink = document.getElementById('mobileAboutMenuLink');
-    const mobileContactMenuLink = document.getElementById('mobileContactMenuLink');
-    const mobileHiringMenuLink = document.getElementById('mobileHiringMenuLink');
 
     // Modal elements
     const downloadAppBtn = document.getElementById('downloadAppBtn');
@@ -84,23 +77,33 @@ document.addEventListener('DOMContentLoaded', function() {
         contactLink.classList.remove('active');
         hiringLink.classList.remove('active');
         
+        // Remove active class from mobile nav links
+        mobileHomeLink.classList.remove('active');
+        mobileAboutLink.classList.remove('active');
+        mobileContactLink.classList.remove('active');
+        mobileHiringLink.classList.remove('active');
+        
         // Show selected section and activate corresponding nav link
         switch(sectionToShow) {
             case 'home':
                 homeSection.classList.add('active');
                 homeLink.classList.add('active');
+                mobileHomeLink.classList.add('active');
                 break;
             case 'about':
                 aboutSection.classList.add('active');
                 aboutLink.classList.add('active');
+                mobileAboutLink.classList.add('active');
                 break;
             case 'contact':
                 contactSection.classList.add('active');
                 contactLink.classList.add('active');
+                mobileContactLink.classList.add('active');
                 break;
             case 'hiring':
                 hiringSection.classList.add('active');
                 hiringLink.classList.add('active');
+                mobileHiringLink.classList.add('active');
                 break;
         }
         
@@ -142,46 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (footerHiringLink) footerHiringLink.addEventListener('click', (e) => { e.preventDefault(); showSection('hiring'); });
 
     // Mobile navigation links in header
+    if (mobileHomeLink) mobileHomeLink.addEventListener('click', (e) => { e.preventDefault(); showSection('home'); });
     if (mobileAboutLink) mobileAboutLink.addEventListener('click', (e) => { e.preventDefault(); showSection('about'); });
     if (mobileContactLink) mobileContactLink.addEventListener('click', (e) => { e.preventDefault(); showSection('contact'); });
     if (mobileHiringLink) mobileHiringLink.addEventListener('click', (e) => { e.preventDefault(); showSection('hiring'); });
 
     // "Apply Now" button in About Us section
     if (aboutHiringLink) aboutHiringLink.addEventListener('click', (e) => { e.preventDefault(); showSection('hiring'); });
-
-    // Mobile menu toggle functionality
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-    }
-
-    // Mobile menu navigation
-    if (mobileHomeLink) mobileHomeLink.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        mobileMenuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        showSection('home'); 
-    });
-    if (mobileAboutMenuLink) mobileAboutMenuLink.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        mobileMenuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        showSection('about'); 
-    });
-    if (mobileContactMenuLink) mobileContactMenuLink.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        mobileMenuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        showSection('contact'); 
-    });
-    if (mobileHiringMenuLink) mobileHiringMenuLink.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        mobileMenuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        showSection('hiring'); 
-    });
 
     // Modal controls
     if (downloadAppBtn) {
