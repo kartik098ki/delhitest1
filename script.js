@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactSection = document.getElementById('contactSection');
     const hiringSection = document.getElementById('hiringSection');
 
+    // Mobile menu elements
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileHomeLink = document.getElementById('mobileHomeLink');
+    const mobileAboutMenuLink = document.getElementById('mobileAboutMenuLink');
+    const mobileContactMenuLink = document.getElementById('mobileContactMenuLink');
+    const mobileHiringMenuLink = document.getElementById('mobileHiringMenuLink');
+
     // Modal elements
     const downloadAppBtn = document.getElementById('downloadAppBtn');
     const appModal = document.getElementById('appModal');
@@ -140,6 +148,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // "Apply Now" button in About Us section
     if (aboutHiringLink) aboutHiringLink.addEventListener('click', (e) => { e.preventDefault(); showSection('hiring'); });
+
+    // Mobile menu toggle functionality
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+
+    // Mobile menu navigation
+    if (mobileHomeLink) mobileHomeLink.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        showSection('home'); 
+    });
+    if (mobileAboutMenuLink) mobileAboutMenuLink.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        showSection('about'); 
+    });
+    if (mobileContactMenuLink) mobileContactMenuLink.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        showSection('contact'); 
+    });
+    if (mobileHiringMenuLink) mobileHiringMenuLink.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        showSection('hiring'); 
+    });
 
     // Modal controls
     if (downloadAppBtn) {
